@@ -17,8 +17,13 @@
     };
 
     refresh();
-  }
+  };
+
+  var AdminDataSourcesCtrl = function ($scope, Events, $http, $timeout) {
+    console.log("hello world");
+  };
 
   angular.module('redash.admin_controllers', [])
          .controller('AdminStatusCtrl', ['$scope', 'Events', '$http', '$timeout', AdminStatusCtrl])
+         .controller('AdminDataSourcesCtrl', ['$scope', 'Events', '$http', '$timeout', AdminDataSourcesCtrl])
 })();
