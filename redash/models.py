@@ -235,13 +235,20 @@ class DataSource(BaseModel):
     class Meta:
         db_table = 'data_sources'
 
-    def to_dict(self):
-        return {
+    def to_dict(self, all=False):
+        d = {
             'id': self.id,
             'name': self.name,
             'type': self.type,
             'syntax': self.query_runner.syntax
         }
+
+        if all:
+            d['options'] = json.loads(self.options)
+            d['queue_name'] = self.queue_name
+            d['scheduled_queue_name'] = self.scheduled_queue_name
+
+        return d
 
     def get_schema(self, refresh=False):
         key = "data_source:schema:{}".format(self.id)

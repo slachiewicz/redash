@@ -481,7 +481,8 @@
 
   var DataSource = function ($resource) {
     var actions = {
-      'get': {'method': 'GET', 'cache': true, 'isArray': true},
+      'get': {'method': 'GET', 'cache': true, 'isArray': false},
+      'query': {'method': 'GET', 'cache': true, 'isArray': true},
       'getSchema': {'method': 'GET', 'cache': true, 'isArray': true, 'url': '/api/data_sources/:id/schema'}
     };
 

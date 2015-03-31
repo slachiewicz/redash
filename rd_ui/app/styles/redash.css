@@ -321,6 +321,11 @@ div.table-name {
     cursor: pointer;
 }
 
+.blankslate {
+    text-align: center;
+    padding: 30px;
+}
+
 /*
 bootstrap's hidden-xs class adds display:block when not hidden
 use this class when you need to keep the original display value

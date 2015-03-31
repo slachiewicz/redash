@@ -80,6 +80,10 @@ angular.module('redash', [
         templateUrl: '/views/admin_status.html',
         controller: 'AdminStatusCtrl'
       });
+      $routeProvider.when('/admin/data_sources/:dataSourceId', {
+        templateUrl: '/views/admin_data_sources.html',
+        controller: 'AdminDataSourceCtrl'
+      });
       $routeProvider.when('/admin/data_sources', {
         templateUrl: '/views/admin_data_sources.html',
         controller: 'AdminDataSourcesCtrl'

@@ -30,6 +30,7 @@ def ping():
     return 'PONG.'
 
 
+@app.route('/admin/<anything>/<whatever>')
 @app.route('/admin/<anything>')
 @app.route('/dashboard/<anything>')
 @app.route('/queries')
@@ -199,6 +200,13 @@ class DataSourceTypeListAPI(BaseResource):
 api.add_resource(DataSourceTypeListAPI, '/api/data_sources/types', endpoint='data_source_types')
 
 
+class DataSourceAPI(BaseResource):
+    @require_permission('admin')
+    def get(self, data_source_id):
+        data_source = models.DataSource.get_by_id(data_source_id)
+        return data_source.to_dict(all=True)
+
+
 class DataSourceListAPI(BaseResource):
     def get(self):
         data_sources = [ds.to_dict() for ds in models.DataSource.all()]
@@ -220,6 +228,7 @@ class DataSourceListAPI(BaseResource):
         return datasource.to_dict()
 
 api.add_resource(DataSourceListAPI, '/api/data_sources', endpoint='data_sources')
+api.add_resource(DataSourceAPI, '/api/data_sources/<data_source_id>', endpoint='data_source')
 
 
 class DataSourceSchemaAPI(BaseResource):

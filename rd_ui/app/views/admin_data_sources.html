@@ -1,3 +1,21 @@
 <div class="container">
-    Hello data sources.
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <a ng-href="/admin/data_sources/{{dataSource.id}}" class="list-group-item" ng-class="{active: dataSourceId==dataSource.id}" ng-repeat="dataSource in dataSources"><i class="fa fa-database"></i> {{dataSource.name}}</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="well well-lg">
+                <div ng-if="!dataSourceId" class="blankslate">
+                    <strong>Please select a data source.</strong>
+                </div>
+                <div ng-if="dataSourceId">
+                    <data-source-form data-data-source="dataSource">
+                    </data-source-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
